@@ -1,0 +1,27 @@
+name: "Weather Message Sender"
+
+on:
+  push:
+  schedule:
+    - cron: "0 21 * * *"
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout codes"
+        uses: actions/checkout@v1
+      - name: "Get Result"
+        run: bash ./weather.sh
+      # - name: "Send mail"
+      #   uses: dawidd6/action-send-mail@master
+      #   with:
+      #     server_address: smtp.163.com
+      #     server_port: 465
+      #     username: ${{ secrets.MAIL_USERNAME }}
+      #     password: ${{ secrets.MAIL_PASSWORD }}
+      #     subject: Shanghai Weather Report
+      #     body: file://result.html
+      #     to: yifeng.ruan@gmail.com
+      #     from: GitHub Actions
+      #     content_type: text/html

@@ -1,0 +1,23 @@
+{
+  "name": "weather-msg-sender",
+  "version": "1.0.0",
+  "description": "> 一个借助 GitHub Actions 来定时发送天气预报短信的小玩意",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linbudu599/weather-msg-sender.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linbudu599/weather-msg-sender/issues"
+  },
+  "homepage": "https://github.com/linbudu599/weather-msg-sender#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
