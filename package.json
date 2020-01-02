@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/linbudu599/weather-msg-sender#readme",
   "dependencies": {
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "tencentcloud-sdk-nodejs": "^3.0.111"
   }
 }

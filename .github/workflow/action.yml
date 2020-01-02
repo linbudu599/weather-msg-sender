@@ -11,17 +11,16 @@ jobs:
     steps:
       - name: "Checkout codes"
         uses: actions/checkout@v1
-      - name: "Get Result"
+        # 获取初始json格式的信息
+      - name: "Get Origin Json File"
         run: bash ./weather.sh
-      # - name: "Send mail"
-      #   uses: dawidd6/action-send-mail@master
-      #   with:
-      #     server_address: smtp.163.com
-      #     server_port: 465
-      #     username: ${{ secrets.MAIL_USERNAME }}
-      #     password: ${{ secrets.MAIL_PASSWORD }}
-      #     subject: Shanghai Weather Report
-      #     body: file://result.html
-      #     to: yifeng.ruan@gmail.com
-      #     from: GitHub Actions
-      #     content_type: text/html
+        # 提取有效信息
+        # 在这一步还要删除原本的result.js
+      - name: "Extract Weather Condition"
+        run: node translate.js
+        # 发送短信
+      - name: "Send Msg"
+        run: node send.js
+        # 记录日志
+      - name: "Log Record"
+        run: node log.js
