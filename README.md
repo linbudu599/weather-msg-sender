@@ -32,4 +32,15 @@
 
 ## 说明
 
-- [腾讯云短信接口使用](docs/sms.md)
+- 腾讯云短信接口使用
+
+  > 这里默认你已经完成了从注册到购买资源包的操作（**腾讯云个人用户首次开通会赠送 100 条短信，最低购买数量为 1 千条，50 元**）。
+  >
+  > 推荐直接使用腾讯云 SDK(for node.js)，请查看[SDK 使用范例](server/send.js)或[官方 GitHub 仓库](https://github.com/TencentCloud/tencentcloud-sdk-nodejs)
+  >
+  > 但仍建议了解相关实现，[腾讯云文档中心-短信 API](https://cloud.tencent.com/document/product/382/3776)
+  >
+  > (Tips: 你可以在 [Api-Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms&SignVersion=) 中迅速熟悉整个流程)
+
+- 腾讯云密钥对
+  > 你需要将 `SECRET_ID` 与 `SECRET_KEY` 保存在 **.env** 文件中
