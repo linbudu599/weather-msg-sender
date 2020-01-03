@@ -3,3 +3,4 @@
 .env
 tmp-env.txt
 log.txt
+/.github/workflows

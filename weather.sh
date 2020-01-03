@@ -2,12 +2,15 @@
 
 set -eux
 
-CITY=WenChang
+CITY=NanChang
 LANGUAGE="zh-CN"
 
-rm stat.json
+rm ./tmp/stat.json
 
 curl \
   -H "Accept-Language: $LANGUAGE" \
-  -o stat.json \
+  -o ./tmp/stat.json \
   wttr.in/$CITY?format=j1
+
+node ./translate
+node ./translate/result.js
