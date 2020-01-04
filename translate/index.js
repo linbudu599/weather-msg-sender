@@ -6,7 +6,6 @@ const jsonRes = fs.readFileSync(
 );
 const res = JSON.parse(jsonRes);
 const { current_condition, weather } = res;
-// console.log(current_condition, weather);
 
 const current = current_condition[0];
 const today_condition = weather[0];
@@ -18,7 +17,6 @@ const weatherDesc = current.weatherDesc[0].value;
 
 // 最低/高温，紫外线指数，昼长时间
 const { mintempC, maxtempC, uvIndex, sunHour, hourly } = today_condition;
-console.log(mintempC, maxtempC, uvIndex, sunHour);
 
 const hour_condition_collections = hourly.map(hour_info => {
   return Object.assign(
@@ -31,7 +29,7 @@ const hour_condition_collections = hourly.map(hour_info => {
   );
 });
 
-console.log(hour_condition_collections);
+// console.log(hour_condition_collections);
 
 module.exports = {
   current_desc,
