@@ -2,7 +2,7 @@
 
 set -eux
 
-CITY=NanChang
+CITY=anChang
 LANGUAGE="zh-CN"
 
 rm ./tmp/stat.json
@@ -12,5 +12,5 @@ curl \
   -o ./tmp/stat.json \
   wttr.in/$CITY?format=j1
 
-node ./translate
-node ./translate/result.js
+node ./translate/index.js
+node ./server/send.js
