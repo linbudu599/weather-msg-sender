@@ -1,9 +1,9 @@
-name: Weather Message Sender
+name: Auto Sender Workflow
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
   schedule:
     # 定时触发，北京时间6点
     - cron: "0 22 * * *"

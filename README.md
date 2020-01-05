@@ -1,5 +1,7 @@
 # weather-msg-sender💌
 
+![workflow status](https://github.com/linbudu599/weather-msg-sender/workflows/Auto%20Sender%20Workflow/badge.svg)
+
 > 一个借助 GitHub Actions 来定时发送天气预报短信的小玩意 ☁⛅⛈🌤🌥🌦🌧🌨🌩🌀🌂🌫🌬
 
 ## 实现
@@ -26,12 +28,12 @@
 
 ## TODO
 
-- [ ] **将整个项目封装为一个npm包并发布**
+- [ ] **将整个项目封装为一个 npm 包并发布**
 - [ ] 当接口超时重启服务
 - [x] 配置 action 脚本
-- [ ] 提取信息及与词库、~~emoji~~（部分emoji短信无法显示） 建立映射
+- [ ] 提取信息及与词库、~~emoji~~（部分 emoji 短信无法显示） 建立映射
 - [ ] 记录日志到服务器
-- [ ] 从 `secrets` 中读取环境变量
+- [x] 从 `secrets` 中读取环境变量
 
 ## 说明
 
@@ -45,5 +47,5 @@
   >
   > (Tips: 你可以在 [Api-Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms&SignVersion=) 中迅速熟悉整个流程)
 
-- 腾讯云密钥对
-  > 你需要将 `SECRET_ID` 与 `SECRET_KEY` 保存在 **.env** 文件中
+- GitHub Actions & Node 环境变量
+  请阅读 [注入 secrets 中的环境变量](docs/env_inject.md) 来获取更多信息
