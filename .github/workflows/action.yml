@@ -2,7 +2,10 @@ name: Weather Message Sender
 
 on:
   push:
+    branches:
+      - master
   schedule:
+    # 定时触发，北京时间6点
     - cron: "0 22 * * *"
 
 jobs:
@@ -11,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
       - name: "Checkout codes"
@@ -24,7 +27,9 @@ jobs:
 
       - name: "Install Dependencies"
         run: |
-          npm i
+          npm install
+        env:
+          CI: true
 
       - name: "Get Origin Json File"
         run: bash ./weather.sh
@@ -32,5 +37,10 @@ jobs:
       - name: "Extract Weather Conditions"
         run: node ./translate
 
-      - name: "Send Msg "
-        run: node ./server/send.js
+      - name: "Send Msg"
+        env:
+          ID: ${{ secrets.SECRET_ID }}
+          KEY: ${{ secrets.SECRET_KEY }}
+          PHONE: ${{ secrets.PHONE_NUMBER_OWN }}
+        run: |
+          node_modules/.bin/cross-env SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE node ./server/send.js

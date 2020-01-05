@@ -11,6 +11,3 @@ curl \
   -H "Accept-Language: $LANGUAGE" \
   -o ./tmp/stat.json \
   wttr.in/$CITY?format=j1
-
-node ./translate/index.js
-node ./server/send.js

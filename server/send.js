@@ -1,10 +1,8 @@
 const tencentcloud = require("tencentcloud-sdk-nodejs");
 const result = require("../translate/result");
-const dotenv = require("dotenv");
 
 const { condition, advice, talk } = result;
 console.log(result);
-dotenv.config("./.env");
 
 // 导入对应产品模块的client models
 const SmsClient = tencentcloud.sms.v20190711.Client;
@@ -40,7 +38,7 @@ let req = new models.SendSmsRequest();
 
 // 这里的各项参数见官方文档
 let params = {
-  PhoneNumberSet: [process.env.PHONE_NUMBER_OWN],
+  PhoneNumberSet: [process.env.PHONE],
   TemplateID: "513049",
   Sign: "林不渡",
   TemplateParamSet: [`${condition}`, `${advice}`, `${talk}`],
