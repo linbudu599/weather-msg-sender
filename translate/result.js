@@ -1,5 +1,5 @@
-const test = require("./index");
-console.log(test);
+const result = require("./index");
+console.log(result);
 
 // TODO: 在这里将结果转化为中文
 
@@ -10,8 +10,8 @@ const {
   maxtempC,
   uvIndex,
   sunHour
-} = test;
+} = result;
 
 exports.condition = `${current_desc},${mintempC}~${maxtempC}`;
-exports.advice = " 出门走走 见见老友";
-exports.talk = "小林也在向有你的未来努力";
+exports.advice = " 开！开！心！心！";
+exports.talk = "小林也在向有你的未来努力~";
