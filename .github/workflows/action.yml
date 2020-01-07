@@ -35,7 +35,7 @@ jobs:
         run: bash ./weather.sh
 
       - name: "Extract Weather Conditions"
-        run: node ./translate
+        run: ts-node ./translate
 
       - name: "Send Msg"
         env:
@@ -43,4 +43,4 @@ jobs:
           KEY: ${{ secrets.SECRET_KEY }}
           PHONE: ${{ secrets.PHONE_NUMBER }}
         run: |
-          node_modules/.bin/cross-env SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE node ./server/send.js
+          node_modules/.bin/cross-env SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE ts-node ./server/send.ts
