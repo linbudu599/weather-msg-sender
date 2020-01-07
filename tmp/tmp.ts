@@ -1,4 +1,4 @@
-const res = {
+const res:any = {
   "current_condition": [
       {
           "FeelsLikeC": "26", 

@@ -47,5 +47,5 @@
   >
   > (Tips: 你可以在 [Api-Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms&SignVersion=) 中迅速熟悉整个流程)
 
-- GitHub Actions & Node 环境变量
+- GitHub Actions & Node 环境变量  
   请阅读 [注入 secrets 中的环境变量](docs/env_inject.md) 来获取更多信息

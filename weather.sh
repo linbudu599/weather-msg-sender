@@ -2,7 +2,7 @@
 
 set -eux
 
-CITY=anChang
+CITY=HaiNan
 LANGUAGE="zh-CN"
 
 rm ./tmp/stat.json

@@ -1,19 +1,24 @@
 const tencentcloud = require("tencentcloud-sdk-nodejs");
-const result = require("../translate/result");
+const result: IStatProps = require("../translate/result");
+
+interface IStatProps {
+  condition: string;
+  advice: string;
+  talk: string;
+}
 
 const { condition, advice, talk } = result;
-console.log(result);
 
 // 导入对应产品模块的client models
 const SmsClient = tencentcloud.sms.v20190711.Client;
 const models = tencentcloud.sms.v20190711.Models;
 
-const Credential = tencentcloud.common.Credential;
+const customCredential = tencentcloud.common.Credential;
 const ClientProfile = tencentcloud.common.ClientProfile;
 const HttpProfile = tencentcloud.common.HttpProfile;
 
 // 实例化一个认证对象，入参需要传入腾讯云账户密钥对secretId，secretKey
-let cred = new Credential(process.env.SECRET_ID, process.env.SECRET_KEY);
+let cred = new customCredential(process.env.SECRET_ID, process.env.SECRET_KEY);
 
 let httpProfile = new HttpProfile();
 
@@ -36,32 +41,29 @@ let client = new SmsClient(cred, "ap-guangzhou", clientProfile);
 
 let req = new models.SendSmsRequest();
 
+interface IParamsProps {
+  PhoneNumberSet: string[];
+  TemplateID: string;
+  Sign: string;
+  TemplateParamSet: string[];
+  SmsSdkAppid: string;
+}
+
 // 这里的各项参数见官方文档
-let params = {
-  PhoneNumberSet: [process.env.PHONE],
+let params: IParamsProps = {
+  PhoneNumberSet: [process.env.PHONE as string],
   TemplateID: "513049",
   Sign: "林不渡",
   TemplateParamSet: [`${condition}`, `${advice}`, `${talk}`],
   SmsSdkAppid: "1400302703"
 };
 
-const jsonParams = JSON.stringify(params);
+const jsonParams: string = JSON.stringify(params);
 
 req.from_json_string(jsonParams);
-// const recordLog = response => {
-//   const { RequestId, SendStatusSet } = response;
-//   const date = new Date().toLocaleString();
 
-//   let logText;
-//   logText = `本次请求状态：成功，时间: ${date}，请求id: ${RequestId}，状态: ${SendStatusSet[0].Code}，回报信息: ${SendStatusSet[0].Message}\r\n`;
-//   try {
-//     fs.appendFileSync("log.txt", logText, "utf-8");
-//   } catch (err) {
-//     throw new Error(err);
-//   }
-// };
-
-client.SendSms(req, (errMsg, response) => {
+// 暂时不确定入参类型
+client.SendSms(req, (errMsg: any, response: any) => {
   if (errMsg) {
     console.log(errMsg);
     return;
