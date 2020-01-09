@@ -1,14 +1,8 @@
 const tencentcloud = require("tencentcloud-sdk-nodejs");
-const result: IStatProps = require("../translate/result");
-
-interface IStatProps {
-  condition: string;
-  advice: string;
-  talk: string;
-}
+import result from "../translate/result";
 
 const { condition, advice, talk } = result;
-
+console.log(condition, advice, talk);
 // 导入对应产品模块的client models
 const SmsClient = tencentcloud.sms.v20190711.Client;
 const models = tencentcloud.sms.v20190711.Models;

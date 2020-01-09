@@ -19,6 +19,7 @@
   "homepage": "https://github.com/linbudu599/weather-msg-sender#readme",
   "dependencies": {
     "@types/node": "^13.1.4",
+    "axios": "^0.19.1",
     "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
     "request": "^2.88.0",
