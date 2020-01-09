@@ -1,14 +1,8 @@
 const tencentcloud = require("tencentcloud-sdk-nodejs");
-const result: IStatProps = require("../translate/result");
-
-interface IStatProps {
-  condition: string;
-  advice: string;
-  talk: string;
-}
+import result from "../translate/result";
 
 const { condition, advice, talk } = result;
-
+console.log(condition, advice, talk);
 // 导入对应产品模块的client models
 const SmsClient = tencentcloud.sms.v20190711.Client;
 const models = tencentcloud.sms.v20190711.Models;
@@ -51,7 +45,7 @@ interface IParamsProps {
 
 // 这里的各项参数见官方文档
 let params: IParamsProps = {
-  PhoneNumberSet: [process.env.PHONE as string],
+  PhoneNumberSet: [process.env.PHONE_NUMBER_OWN as string],
   TemplateID: "513049",
   Sign: "林不渡",
   TemplateParamSet: [`${condition}`, `${advice}`, `${talk}`],
