@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/linbudu599/weather-msg-sender.git"
+    "url": "git+https://github.com/linbudu599/weather-msg-sender.git",
+    "test": "bash flow_test.sh"
   },
   "keywords": [],
   "author": "林不渡",
