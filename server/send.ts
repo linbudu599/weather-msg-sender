@@ -1,6 +1,6 @@
 const tencentcloud = require("tencentcloud-sdk-nodejs");
 import result from "../translate/result";
-
+import axios from "axios";
 const { condition, advice, talk } = result;
 console.log(condition, advice, talk);
 // 导入对应产品模块的client models
@@ -56,11 +56,30 @@ const jsonParams: string = JSON.stringify(params);
 
 req.from_json_string(jsonParams);
 
-// 暂时不确定入参类型
+interface ISendLog {
+  (type: string, data: any): void;
+}
+
+const sendLog: ISendLog = (type, data) => {
+  axios.post("http://log.linbudu.top/weather", {
+    data: Object.assign(
+      {},
+      {
+        type,
+        response: data,
+        content: { condition, advice, talk }
+      }
+    )
+  });
+};
+
+// FIXME: errMsg类型暂不确定
 client.SendSms(req, (errMsg: any, response: any) => {
   if (errMsg) {
     console.log(errMsg);
+    sendLog("failure", errMsg);
     return;
   }
-  console.log(response.to_json_string());
+  console.log(response);
+  sendLog("success", response);
 });

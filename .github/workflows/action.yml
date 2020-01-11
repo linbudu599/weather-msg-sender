@@ -43,6 +43,6 @@ jobs:
         env:
           ID: ${{ secrets.SECRET_ID }}
           KEY: ${{ secrets.SECRET_KEY }}
-          PHONE: ${{ secrets.PHONE_NUMBER }}
+          PHONE: ${{ secrets.PHONE_NUMBER_OWN }}
         run: |
           node_modules/.bin/cross-env SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE node_modules/.bin/ts-node ./server/send.ts

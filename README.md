@@ -28,12 +28,12 @@
 
 ## TODO
 
-- [ ] **将整个项目封装为一个 npm 包并发布**
+- [ ] **将整个项目封装为一个 npm 包并发布**，采用类似 `vue create <project>` 的形式生成一套模板文件及暴露核心 API
 - [ ] 当接口超时重启服务
+- [ ] 丰富错误校验机制
 - [x] 配置 action 脚本
-- [ ] 提取信息及与词库、~~emoji~~（部分 emoji 短信无法显示） 建立映射
-- [ ] 记录日志到服务器
-- [x] 从 `secrets` 中读取环境变量
+- [x] 提取信息及与词库、~~emoji~~（部分 emoji 短信无法显示） 建立映射
+- [x] 记录日志到服务器，见[Log Server](https://github.com/linbudu599/Log_Server)
 
 ## 说明
 
@@ -49,3 +49,6 @@
 
 - GitHub Actions & Node 环境变量  
   请阅读 [注入 secrets 中的环境变量](docs/env_inject.md) 来获取更多信息
+
+- 日志模块
+  使用说明见 [Log Server](https://github.com/linbudu599/Log_Server)

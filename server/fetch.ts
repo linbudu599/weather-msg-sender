@@ -19,5 +19,6 @@ const fetchData: IFetchProps = async (app_key, city) => {
     console.log(err);
   }
 };
+
 fetchData(process.env.APP_KEY as string, encodeURI(city));
 console.log("fetch successfully");
