@@ -24,7 +24,7 @@
     "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
     "request": "^2.88.0",
-    "tencentcloud-sdk-nodejs": "^3.0.111",
+    "tencentcloud-sdk-nodejs": "^3.0.228",
     "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4"
