@@ -4,7 +4,7 @@
   "description": "> 一个借助 GitHub Actions 来定时发送天气预报短信的小玩意",
   "main": "test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node ./server/fetch.ts && ts-node ./server/send.ts"
   },
   "repository": {
     "type": "git",
@@ -13,20 +13,21 @@
   },
   "keywords": [],
   "author": "林不渡",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/linbudu599/weather-msg-sender/issues"
   },
   "homepage": "https://github.com/linbudu599/weather-msg-sender#readme",
   "dependencies": {
-    "@types/node": "^13.1.4",
-    "axios": "^0.19.1",
+    "@types/node": "^13.13.28",
+    "axios": "^0.19.2",
+    "chalk": "^4.1.0",
     "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
-    "request": "^2.88.0",
-    "tencentcloud-sdk-nodejs": "^3.0.111",
-    "ts-node": "^8.5.4",
+    "request": "^2.88.2",
+    "tencentcloud-sdk-nodejs": "^3.0.267",
+    "ts-node": "^8.10.2",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.9.7"
   }
 }

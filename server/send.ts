@@ -1,8 +1,16 @@
 const tencentcloud = require("tencentcloud-sdk-nodejs");
-import result from "../translate/result";
 import axios from "axios";
-const { condition, advice, talk } = result;
-console.log(condition, advice, talk);
+import dotenv from "dotenv";
+
+import { log } from "./util";
+import result from "./translate";
+
+dotenv.config();
+
+const { condition, advice, encourage } = result;
+log("=== Processed Msg Content ===");
+log(JSON.stringify(result));
+
 // 导入对应产品模块的client models
 const SmsClient = tencentcloud.sms.v20190711.Client;
 const models = tencentcloud.sms.v20190711.Models;
@@ -45,11 +53,11 @@ interface IParamsProps {
 
 // 这里的各项参数见官方文档
 let params: IParamsProps = {
-  PhoneNumberSet: [process.env.PHONE as string],
-  TemplateID: "513049",
+  PhoneNumberSet: [process.env.PHONE!],
+  TemplateID: "754841",
   Sign: "林不渡",
-  TemplateParamSet: [`${condition}`, `${advice}`, `${talk}`],
-  SmsSdkAppid: "1400302703"
+  TemplateParamSet: [`${condition}`, `${advice}`, `${encourage}`],
+  SmsSdkAppid: process.env.APP_ID!,
 };
 
 const jsonParams: string = JSON.stringify(params);
@@ -60,6 +68,7 @@ interface ISendLog {
   (type: string, data: any): void;
 }
 
+log("=== Send Log ===");
 const sendLog: ISendLog = (type, data) => {
   axios.post("http://log.linbudu.top/weather", {
     data: Object.assign(
@@ -67,19 +76,20 @@ const sendLog: ISendLog = (type, data) => {
       {
         type,
         response: data,
-        content: { condition, advice, talk }
+        content: { condition, advice, encourage },
       }
-    )
+    ),
   });
 };
 
+log("=== Send Msg ===");
 // FIXME: errMsg类型暂不确定
 client.SendSms(req, (errMsg: any, response: any) => {
   if (errMsg) {
-    console.log(errMsg);
+    log(errMsg, "red");
     sendLog("failure", errMsg);
     return;
   }
-  console.log(response);
+  log(JSON.stringify(response));
   sendLog("success", response);
 });

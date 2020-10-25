@@ -1,24 +1,35 @@
 import fs from "fs";
 import axios from "axios";
+import dotenv from "dotenv";
 
-interface IFetchProps {
-  (app_key: string, city: string): any;
+dotenv.config();
+
+import { log, CITY, STATS_PATH } from "./util";
+
+interface IFetchFunc {
+  (app_key: string, city: string): Promise<void>;
 }
 
-const city: string = "文昌";
-
-const fetchData: IFetchProps = async (app_key, city) => {
+export const fetchData: IFetchFunc = async (app_key, city) => {
+  log("=== Start Fetch Data ===");
   const res = await axios.get(
     `https://api.jisuapi.com/weather/query?appkey=${app_key}&city=${city}`
   );
+  const exist = fs.existsSync(STATS_PATH);
 
   try {
-    fs.unlinkSync("./stat.json");
-    fs.appendFileSync("./stat.json", JSON.stringify(res.data));
+    if (exist) {
+      console.log("=== Delete Stas Past ===");
+      fs.unlinkSync(STATS_PATH);
+    }
+    log("=== Create Stas Today ===");
+    fs.writeFileSync(STATS_PATH, JSON.stringify(res.data));
   } catch (err) {
+    // TODO: record by arti
     console.log(err);
   }
 };
 
-fetchData(process.env.APP_KEY as string, encodeURI(city));
-console.log("fetch successfully");
+fetchData(process.env.APP_KEY as string, encodeURI(CITY));
+
+log("=== Fetch Weather Info Successfully ===");

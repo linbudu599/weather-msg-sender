@@ -1,11 +1,7 @@
 name: Auto Sender Workflow
 
 on:
-  push:
-  #   branches:
-  #     - master
   schedule:
-    # 定时触发，北京时间6点
     - cron: "0 22 * * *"
 
 jobs:
@@ -25,24 +21,21 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: "Install Dependencies"
+      - name: Install Dependencies
         run: |
           npm install
         env:
           CI: true
 
-      - name: "Get Origin Json File"
+      - name: Get Origin Json File
         env:
           APP_KEY: ${{ secrets.APP_KEY }}
         run: node_modules/.bin/cross-env APP_KEY=$APP_KEY node_modules/.bin/ts-node ./server/fetch.ts
 
-      - name: "Extract Weather Conditions"
-        run: node_modules/.bin/ts-node ./translate/index.ts
-
-      - name: "Send Msg"
+      - name: Send Msg
         env:
           ID: ${{ secrets.SECRET_ID }}
           KEY: ${{ secrets.SECRET_KEY }}
-          PHONE: ${{ secrets.PHONE_NUMBER_OWN }}
+          PHONE: ${{ secrets.PHONE_NUMBER }}
         run: |
           node_modules/.bin/cross-env SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE node_modules/.bin/ts-node ./server/send.ts

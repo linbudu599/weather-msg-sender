@@ -3,3 +3,5 @@
 .env
 tmp-env.txt
 log.txt
+/stats.json
+/.env
