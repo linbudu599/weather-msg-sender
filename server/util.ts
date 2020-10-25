@@ -42,13 +42,13 @@ export const getAdvice = (condition: string): string => {
   let advice: string;
 
   if (condition.includes("晴")) {
-    advice = "吊床躺躺，背背单词";
+    advice = "晴天适合在走廊上背背书~";
   } else if (condition.includes("雨")) {
-    advice = "床上瘫瘫，睡睡懒觉";
+    advice = "雨天适合在教室里安心做题";
   } else if (condition.includes("云")) {
-    advice = "出门走走，见见老友";
+    advice = "多云适合干啥? 想我吧";
   } else {
-    advice = "挠头";
+    advice = "今天适合多吃点!";
   }
 
   return advice;

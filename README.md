@@ -9,24 +9,16 @@
 
 ## 实现
 
-- **GitHub Actions** 自动化运行（北京时间 6 点）
+- **GitHub Actions** 定时运行（北京时间 6 点）
 - **[急速数据](https://www.jisuapi.com/api/weather/)**，提供天气预报 API 接口
 - **腾讯云** 提供短信服务
 
 ## 流程
 
 - GitHub Actions 会在预设好的时间定时触发，跑一遍 flow，[查看 Workflow 文件](./.github/workflows/action.yml)
-- 调用脚本获取信息，写入 json 文件，[查看 fetch.ts](server/fetch.ts)
+- 调用脚本获取信息，写入 json 文件，查看[fetch.ts](server/fetch.ts)
 - 提取信息，转化为文本，~~添加 emoji~~（部分手机 emoji 乱码）
 - 使用腾讯云的短信 SDK 来发送到指定的手机号，[SDK 使用范例](server/send.js)
-- 将发送情况保存到日志（这里需要向自己的服务器发一个 POST 请求，把日志保存在服务器上）
-
-## TODO
-
-- [ ] **将整个项目封装为一个 npm 包并发布**，采用类似 `vue create <project>` 的形式生成一套模板文件及暴露核心 API
-- [ ] 当接口超时重启服务
-- [ ] 丰富错误校验机制
-- [x] 记录日志到服务器，见[Log Server](https://github.com/linbudu599/Log_Server)
 
 ## 说明
 
@@ -42,6 +34,3 @@
 
 - GitHub Actions & Node 环境变量  
   请阅读 [注入 secrets 中的环境变量](docs/env_inject.md) 来获取更多信息
-
-- 日志模块
-  使用说明见 [Log Server](https://github.com/linbudu599/Log_Server)

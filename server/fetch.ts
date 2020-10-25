@@ -15,11 +15,12 @@ export const fetchData: IFetchFunc = async (app_key, city) => {
   const res = await axios.get(
     `https://api.jisuapi.com/weather/query?appkey=${app_key}&city=${city}`
   );
+
   const exist = fs.existsSync(STATS_PATH);
 
   try {
     if (exist) {
-      console.log("=== Delete Stas Past ===");
+      log("=== Delete Stas Past ===");
       fs.unlinkSync(STATS_PATH);
     }
     log("=== Create Stas Today ===");

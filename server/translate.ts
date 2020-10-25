@@ -14,7 +14,7 @@ const { result }: IStatProps = JSON.parse(stat);
 log("extract weather conditions successfully");
 
 const { weather, temphigh, templow, windpower } = result;
-const condition: string = `${weather},${templow}~${temphigh},${windpower}风`;
+const condition: string = `${weather}, ${templow}℃ ~ ${temphigh}℃, ${windpower}风`;
 
 const advice = getAdvice(condition);
 
@@ -27,6 +27,8 @@ const msgParams: IMsgProps = {
   encourage,
 };
 
-log("msg ready");
+console.log(msgParams);
+
+log("=== Msg Content Ready ===");
 
 export default msgParams;
