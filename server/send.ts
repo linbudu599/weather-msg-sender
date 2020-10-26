@@ -57,7 +57,8 @@ let params: IParamsProps = {
   TemplateID: "754841",
   Sign: "林不渡",
   TemplateParamSet: [`${condition}`, `${advice}`, `${encourage}`],
-  SmsSdkAppid: process.env.APP_ID!,
+  // SmsSdkAppid: process.env.APP_ID!
+  SmsSdkAppid: "1400302703",
 };
 
 const jsonParams: string = JSON.stringify(params);
