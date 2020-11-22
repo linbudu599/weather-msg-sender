@@ -18,7 +18,7 @@ const condition: string = `${weather}, ${templow}℃ ~ ${temphigh}℃, ${windpow
 
 const advice = getAdvice(condition);
 
-const random_idx: number = Math.floor(Math.random() * 5);
+const random_idx: number = Math.floor(Math.random() * 14);
 const encourage = encourageArr[random_idx];
 
 const msgParams: IMsgProps = {
