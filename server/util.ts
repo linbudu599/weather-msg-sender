@@ -4,7 +4,7 @@ import path from "path";
 export const log = (message: string, color: string = "green"): void =>
   console.log(chalk[color as typeof Color](message));
 
-export const CITY: string = "南昌";
+export const CITY: string = "文昌";
 export const STATS_PATH = path.join(__dirname, "../stats.json");
 
 export interface IStatProps {
