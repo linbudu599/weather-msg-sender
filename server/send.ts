@@ -54,7 +54,7 @@ interface IParamsProps {
 // 这里的各项参数见官方文档
 let params: IParamsProps = {
   PhoneNumberSet: [process.env.PHONE!],
-  TemplateID: "754841",
+  TemplateID: "843130",
   Sign: "林不渡",
   TemplateParamSet: [`${condition}`, `${advice}`, `${encourage}`],
   // SmsSdkAppid: process.env.APP_ID!
