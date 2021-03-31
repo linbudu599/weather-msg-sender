@@ -23,19 +23,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install
+          npm install pnpm -g
+          pnpm install
         env:
           CI: true
 
-      - name: Get Origin Json File
+      - name: Invoke
         env:
           APP_KEY: ${{ secrets.APP_KEY }}
-        run: node_modules/.bin/cross-env APP_KEY=$APP_KEY node_modules/.bin/ts-node ./server/fetch.ts
-
-      - name: Send Msg
-        env:
           ID: ${{ secrets.SECRET_ID }}
           KEY: ${{ secrets.SECRET_KEY }}
           PHONE: ${{ secrets.PHONE_NUMBER }}
-        run: |
-          node_modules/.bin/cross-env SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE node_modules/.bin/ts-node ./server/send.ts
+        run: node_modules/.bin/cross-env APP_KEY=$APP_KEY SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE node_modules/.bin/ts-node ./server/index.ts
