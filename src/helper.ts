@@ -98,9 +98,9 @@ export async function sendMsg(content: IMsgProps) {
     {
       PhoneNumberSet: phone,
       TemplateID: process.env.TEMPLATE_ID!,
-      Sign: process.env.SIGN!,
+      Sign: "林不渡",
       TemplateParamSet: [`${condition}`, `${caring}`, `${encourage}`],
-      SmsSdkAppid: process.env.SMS_SDK_APP_ID!,
+      SmsSdkAppid: "1400302703",
     },
     (errMsg: any, response: any) => {
       if (errMsg) {

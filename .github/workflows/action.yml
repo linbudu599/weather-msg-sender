@@ -3,6 +3,8 @@ name: Auto Sender Workflow
 on:
   schedule:
     - cron: "0 22 * * *"
+  push:
+    branches: [master, main]
 
 jobs:
   sender:
@@ -34,4 +36,6 @@ jobs:
           ID: ${{ secrets.SECRET_ID }}
           KEY: ${{ secrets.SECRET_KEY }}
           PHONE: ${{ secrets.PHONE_NUMBER }}
-        run: node_modules/.bin/cross-env APP_KEY=$APP_KEY SECRET_ID=$ID SECRET_KEY=$KEY PHONE=$PHONE node_modules/.bin/ts-node ./server/index.ts
+          SELF_PHONE: ${{ secrets.PHONE_NUMBER_OWN}}
+          TEMPLATE_ID: ${{ secrets.TEMPLATE_ID}}
+        run: node_modules/.bin/cross-env APP_KEY=$APP_KEY SECRET_ID=$ID SECRET_KEY=$KEY TARGET_PHONE=$PHONE SELF_PHONE=$SELF_PHONE node_modules/.bin/ts-node ./src/main.ts
