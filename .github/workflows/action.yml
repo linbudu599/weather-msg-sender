@@ -25,10 +25,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install pnpm -g
-          pnpm install
-        env:
-          CI: true
+          yarn
 
       - name: Invoke
         env:
