@@ -13,7 +13,7 @@ import {
   STATS_PATH,
   IStatProps,
 } from "./util";
-import { IParamsProps } from "./type";
+import { IParamsProps } from "../src/type";
 
 dotenv.config();
 
@@ -58,8 +58,8 @@ async function sendMsg(condition: string, advice: string, encourage: string) {
 
   let client = new SmsClient({
     credential: {
-      secretId: process.env.SECRET_ID,
-      secretKey: process.env.SECRET_KEY,
+      secretId: process.env.SECRET_ID!,
+      secretKey: process.env.SECRET_KEY!,
     },
     region: "ap-guangzhou",
     profile: {
