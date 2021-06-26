@@ -92,7 +92,7 @@ export async function sendMsg(content: IMsgProps) {
 
   const phone = process.env.USE_SELF!
     ? [process.env.SELF_PHONE!]
-    : [process.env.SELF_PHONE!];
+    : [process.env.SELF_PHONE!, process.env.TARGET_PHONE!];
 
   console.log("phone: ", phone);
 
