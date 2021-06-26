@@ -2,7 +2,6 @@
   "name": "weather-msg-sender",
   "version": "0.1.0",
   "description": "一个借助 GitHub Actions 来定时发送天气预报短信的小玩意",
-  "main": "test.js",
   "scripts": {
     "dev": "cross-env USE_SELF=true ts-node ./src/main.ts"
   },
