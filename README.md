@@ -16,13 +16,14 @@
 ## 流程
 
 - GitHub Actions 会在预设好的时间定时触发，跑一遍 flow，[查看 Workflow 文件](./.github/workflows/action.yml)
-- 调用脚本获取信息，写入 json 文件，查看[fetch.ts](server/fetch.ts)
-- 提取信息，转化为文本，~~添加 emoji~~（部分手机 emoji 乱码）
-- 使用腾讯云的短信 SDK 来发送到指定的手机号，[SDK 使用范例](server/send.js)
+- 获取天气信息，基于天气情况插入相关语句
+- 使用腾讯云的短信 SDK 来发送到指定的手机号，见 [官方使用示例](https://github.com/TencentCloud/tencentcloud-sdk-nodejs/blob/master/examples/sms/v20190711/SendSms.js)
 
-## 说明
+## 使用说明
 
-- 腾讯云短信接口使用
+- 注册[极速数据](https://www.jisuapi.com/my/)， 购买[天气预报API](https://www.jisuapi.com/my/buy/5)，价格约为21元/5w次。
+
+- 注册腾讯云，购买短信服务，注册正文模板、短信签名等（见官方快速指引）
 
   > 这里默认你已经完成了从注册到购买资源包的操作（**腾讯云个人用户首次开通会赠送 100 条短信，最低购买数量为 1 千条，50 元**）。
   >
@@ -30,7 +31,17 @@
   >
   > 但仍建议了解相关实现，[腾讯云文档中心-短信 API](https://cloud.tencent.com/document/product/382/3776)
   >
-  > (Tips: 你可以在 [Api-Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms&SignVersion=) 中迅速熟悉整个流程)
+  > (Tips: 你可以在 [API-Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms&SignVersion=) 中迅速熟悉整个流程)
+
+- fork这个仓库，修改以下SECRETS变量（Repo->Settings->Secrets）：
+
+  ![image-20210626102547199](https://budu-oss-store.oss-cn-shenzhen.aliyuncs.com/image-20210626102547199.png)
+
+  - APP_KEY: 极速数据APPKEY
+  - PHONE_NUMBER: 目标手机号码（如果你有多个目标，请自己魔改...） 
+  - PHONE_NUMBER_OWN: 自己的手机号码（推荐给自己也发一份，这样在API挂了的时候能第一时间知到）
+  - SECRET_ID SECRET_KEY：腾讯云密钥
+  - TEMPLATE_ID：短信模板ID
 
 - GitHub Actions & Node 环境变量  
   请阅读 [注入 secrets 中的环境变量](docs/env_inject.md) 来获取更多信息
