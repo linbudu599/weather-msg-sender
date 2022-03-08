@@ -2,8 +2,7 @@
 
 ![GitHub license](https://img.shields.io/github/license/linbudu599/weather-msg-sender)
 ![Commits](https://badgen.net/github/commits/linbudu599/weather-msg-sender)
-![workflow status](https://github.com/linbudu599/weather-msg-sender/workflows/Auto%20Sender%20Workflow/badge.svg)
-![dependencies](https://badgen.net/david/dep/linbudu599/weather-msg-sender)
+[![Auto Sender Workflow](https://github.com/linbudu599/weather-msg-sender/actions/workflows/action.yml/badge.svg)](https://github.com/linbudu599/weather-msg-sender/actions/workflows/action.yml)
 
 > 一个借助 GitHub Actions 来定时发送天气预报短信的小玩意 ☁⛅⛈🌤🌥🌦🌧🌨🌩🌀🌂🌫🌬
 
