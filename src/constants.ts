@@ -15,6 +15,6 @@ export const encourageArr: string[] = [
 export const log = (message: string, color: string = "green"): void =>
   console.log(chalk[color as typeof Color](message));
 
-export const CITY: string = "深圳";
+export const CITY: string = "杭州";
 
 export const FETCH_FAILED_FLAG = Symbol("Fetch Failed");
